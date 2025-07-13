@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://5fxewqqg45hf"]
+[gd_scene load_steps=9 format=3 uid="uid://5fxewqqg45hf"]
 
 [ext_resource type="Script" uid="uid://guqp32hck1vy" path="res://objects/enemies/bomb/bomb.gd" id="1_h3qxr"]
 [ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="1_xyr6c"]
+[ext_resource type="Script" uid="uid://8nek4dt7n78g" path="res://components/movement/collide_and_bounce.gd" id="3_nyqm0"]
 
 [sub_resource type="Animation" id="Animation_h3qxr"]
 resource_name = "bounce"
@@ -106,11 +107,11 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CollisionShape2D:disabled")
+tracks/8/path = NodePath("Area2D/CollisionShape2D:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 2, 2.3),
+"times": PackedFloat32Array(0, 2, 2.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -118,7 +119,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("CollisionShape2D:scale")
+tracks/9/path = NodePath("Area2D/CollisionShape2D:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -241,7 +242,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CollisionShape2D:disabled")
+tracks/8/path = NodePath("Area2D/CollisionShape2D:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -253,7 +254,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("CollisionShape2D:scale")
+tracks/9/path = NodePath("Area2D/CollisionShape2D:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -284,7 +285,13 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_nyqm0"]
 radius = 1.0
 
-[node name="Bomb" type="AnimatableBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_a3jwb"]
+radius = 0.6875
+
+[node name="Bomb" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
 script = ExtResource("1_h3qxr")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -310,10 +317,6 @@ libraries = {
 }
 autoplay = "bounce"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_nyqm0")
-disabled = true
-
 [node name="Shadow" type="Node2D" parent="."]
 script = ExtResource("1_xyr6c")
 radius = 8.0
@@ -321,4 +324,21 @@ draw_color = Color(1, 1, 1, 0)
 fill_color = Color(0.117647, 0.101961, 0.12549, 1)
 metadata/_custom_type_script = "uid://bxm5rpt45kanq"
 
+[node name="CollideAndBounce" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("3_nyqm0")
+body = NodePath("..")
+metadata/_custom_type_script = "uid://8nek4dt7n78g"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_nyqm0")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(16, 16)
+shape = SubResource("CircleShape2D_a3jwb")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_anim_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -4,7 +4,7 @@ var spawnrates: Array[EnemySpawnrate]
 
 func _ready() -> void:
 	for i in ResourceLoader.list_directory("res://resources/enemy_spawnrates/"):
-		var resource = load(i)
+		var resource = load("res://resources/enemy_spawnrates/" + i)
 		if resource is EnemySpawnrate:
 			spawnrates.append(resource)
 

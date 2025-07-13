@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhcqqhdoia5pm"]
+[gd_scene load_steps=9 format=3 uid="uid://bhcqqhdoia5pm"]
 
 [ext_resource type="Script" uid="uid://bg5p2odcq6yu5" path="res://scenes/world/world.gd" id="1_1fp7r"]
 [ext_resource type="PackedScene" uid="uid://dmfb48wuei142" path="res://objects/player/player.tscn" id="1_dphjl"]
@@ -12,6 +12,29 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -2, 18, 0, 0, 0, 0, 639, 17, 0, 0, 0, 0, 638, 362, 0, 0, 0, 0, 0, 358, 0, 0, 0, 0, -2, 18)
 }
 point_count = 5
+
+[sub_resource type="Animation" id="Animation_v5dby"]
+resource_name = "spawn_bomb_test"
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t5ptc"]
+_data = {
+&"spawn_bomb_test": SubResource("Animation_v5dby")
+}
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_1fp7r")
@@ -69,3 +92,9 @@ script = ExtResource("3_6m72w")
 [node name="Bomb" type="Path2D" parent="EnemySpawner"]
 curve = SubResource("Curve2D_6m72w")
 script = ExtResource("3_1fp7r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnemySpawner/Bomb"]
+libraries = {
+&"": SubResource("AnimationLibrary_t5ptc")
+}
+autoplay = "spawn_bomb_test"
