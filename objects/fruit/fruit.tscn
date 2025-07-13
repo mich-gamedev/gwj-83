@@ -118,7 +118,7 @@ visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4yplr")
 autoplay = "default"
-frame_progress = 0.431523
+frame_progress = 0.273366
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }

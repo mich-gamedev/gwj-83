@@ -66,6 +66,35 @@ tracks/4/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_81l3b"]
+resource_name = "decay"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RingDraw:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [8.0, 6.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RingDraw:fill_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.117647, 0.101961, 0.12549, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_wkbvm"]
 resource_name = "pop"
 length = 0.5
@@ -160,35 +189,6 @@ tracks/1/keys = {
 "values": [0.0, 2.0]
 }
 
-[sub_resource type="Animation" id="Animation_81l3b"]
-resource_name = "decay"
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RingDraw:radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [8.0, 6.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RingDraw:fill_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.117647, 0.101961, 0.12549, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_81l3b"]
 _data = {
 &"RESET": SubResource("Animation_1wdl1"),
@@ -210,7 +210,6 @@ script = ExtResource("1_dok8m")
 script = ExtResource("1_kvlhe")
 width = 2.0
 radius = 8.0
-point_count = 16
 draw_color = Color(0.290196, 0.890196, 0.74902, 1)
 fill_color = Color(0.290196, 0.890196, 0.74902, 1)
 metadata/_custom_type_script = "uid://bxm5rpt45kanq"

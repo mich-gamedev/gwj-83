@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmfb48wuei142"]
+[gd_scene load_steps=8 format=3 uid="uid://dmfb48wuei142"]
 
 [ext_resource type="Script" uid="uid://dftp31beve6dm" path="res://objects/player/player.gd" id="1_cqmt1"]
 [ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="2_g7ett"]
@@ -9,6 +9,69 @@ radius = 8.0
 [sub_resource type="Curve" id="Curve_cqmt1"]
 _data = [Vector2(0, 0.496673), 0.0, 2.08711, 0, 0, Vector2(0.501667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.496673), -1.70092, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="Animation" id="Animation_g7ett"]
+resource_name = "flick"
+length = 4.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.4, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.4, 3.45, 3.5, 3.55, 3.6),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [PackedVector2Array(12, 0, 12, 0), PackedVector2Array(12, 0, 20, 0), PackedVector2Array(12, 0, 16, 0), PackedVector2Array(12, 0, 20, 0), PackedVector2Array(12, 0, 12, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ssrue"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:points")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(12, 0, 20, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jnjyq"]
+_data = {
+&"RESET": SubResource("Animation_ssrue"),
+&"flick": SubResource("Animation_g7ett")
+}
 
 [node name="Player" type="Node2D" groups=["player"]]
 script = ExtResource("1_cqmt1")
@@ -50,3 +113,24 @@ point_count = 16
 draw_color = Color(0.183537, 0.140442, 0.203125, 1)
 fill_color = Color(0.117647, 0.101961, 0.12549, 1)
 metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Tongue" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(12, 0, 20, 0)
+width = 4.0
+default_color = Color(0.87451, 0.309804, 0.803922, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tongue"]
+libraries = {
+&"": SubResource("AnimationLibrary_jnjyq")
+}
+autoplay = "flick"
+
+[node name="MouseWarper" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
