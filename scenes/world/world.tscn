@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhcqqhdoia5pm"]
+
+[ext_resource type="Script" uid="uid://bg5p2odcq6yu5" path="res://scenes/world/world.gd" id="1_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://dmfb48wuei142" path="res://objects/player/player.tscn" id="1_dphjl"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sl2e5"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_1fp7r")
+
+[node name="Player" parent="." instance=ExtResource("1_dphjl")]
+position = Vector2(271, 174)
+
+[node name="FruitRect" type="ReferenceRect" parent="."]
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 616.0
+offset_bottom = 336.0
+mouse_filter = 2
+
+[node name="Border" type="ReferenceRect" parent="."]
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 624.0
+offset_bottom = 344.0
+mouse_filter = 2
+border_color = Color(0.964706, 0.984314, 0.85098, 1)
+border_width = 4.0
+editor_only = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(16, 32)
+rotation = 1.57079
+shape = SubResource("WorldBoundaryShape2D_sl2e5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(624, 32)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_sl2e5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(624, 344)
+rotation = 4.71238
+shape = SubResource("WorldBoundaryShape2D_sl2e5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(16, 344)
+rotation = 6.28318
+shape = SubResource("WorldBoundaryShape2D_sl2e5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)

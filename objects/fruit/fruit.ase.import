@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://idvrh7ln5xtv"
+path="res://.godot/imported/fruit.ase-30f673340036896df7df78255af3b630.res"
+
+[deps]
+
+source_file="res://objects/fruit/fruit.ase"
+dest_files=["res://.godot/imported/fruit.ase-30f673340036896df7df78255af3b630.res"]
+
+[params]
+

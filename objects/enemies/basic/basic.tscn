@@ -1,0 +1,213 @@
+[gd_scene load_steps=11 format=3 uid="uid://dg0m01h6uvkoj"]
+
+[ext_resource type="Script" uid="uid://8nek4dt7n78g" path="res://components/movement/collide_and_bounce.gd" id="1_4wc4e"]
+[ext_resource type="Script" uid="uid://5sl3f0lhmeq3" path="res://objects/enemies/basic/basic.gd" id="1_tu4m2"]
+[ext_resource type="Script" uid="uid://5fwi6gu8lp0h" path="res://components/movement/move_towards.gd" id="2_bhu12"]
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="3_bhu12"]
+
+[sub_resource type="Animation" id="Animation_tu4m2"]
+resource_name = "oscillate"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MoveBodyTowards:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.55, 1),
+"transitions": PackedFloat32Array(2, 0, 0.5, 1),
+"update": 0,
+"values": [0.0, 3.14159, -3.14159, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vi56m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MoveBodyTowards:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MoveBodyTowards:active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RingDraw:width")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RingDraw:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RingDraw:draw_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.117647, 0.101961, 0.12549, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RingDraw:fill_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.929412, 0.623529, 0.164706, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a0y2w"]
+resource_name = "kill"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MoveBodyTowards:active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RingDraw:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [4.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RingDraw:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [10.0, 16.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RingDraw:draw_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.929412, 0.623529, 0.164706, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RingDraw:fill_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.117647, 0.101961, 0.12549, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a0y2w"]
+_data = {
+&"RESET": SubResource("Animation_vi56m"),
+&"kill": SubResource("Animation_a0y2w"),
+&"oscillate": SubResource("Animation_tu4m2")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhu12"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y7edk"]
+
+[node name="BasicEnemy" type="CharacterBody2D" groups=["kill_node"]]
+script = ExtResource("1_tu4m2")
+
+[node name="CollideAndBounce" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("1_4wc4e")
+body = NodePath("..")
+metadata/_custom_type_script = "uid://8nek4dt7n78g"
+
+[node name="MoveBodyTowards" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("2_bhu12")
+accel = 256.0
+body = NodePath("..")
+metadata/_custom_type_script = "uid://5fwi6gu8lp0h"
+
+[node name="RingDraw" type="Node2D" parent="."]
+script = ExtResource("3_bhu12")
+radius = 10.0
+point_count = 16
+draw_color = Color(0.117647, 0.101961, 0.12549, 1)
+fill_color = Color(0.929412, 0.623529, 0.164706, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a0y2w")
+}
+autoplay = "oscillate"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bhu12")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_y7edk")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

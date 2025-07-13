@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmfb48wuei142"]
+
+[ext_resource type="Script" uid="uid://dftp31beve6dm" path="res://objects/player/player.gd" id="1_cqmt1"]
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="2_g7ett"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cqmt1"]
+radius = 8.0
+
+[sub_resource type="Curve" id="Curve_cqmt1"]
+_data = [Vector2(0, 0.496673), 0.0, 2.08711, 0, 0, Vector2(0.501667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.496673), -1.70092, 0.0, 0, 0]
+point_count = 3
+
+[node name="Player" type="Node2D" groups=["player"]]
+script = ExtResource("1_cqmt1")
+
+[node name="CollCast" type="ShapeCast2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_cqmt1")
+max_results = 1
+collision_mask = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+top_level = true
+z_index = -1
+width = 4.0
+default_color = Color(0.290196, 0.890196, 0.74902, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 3
+
+[node name="FruitCast" type="RayCast2D" parent="."]
+exclude_parent = false
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Guide" type="Line2D" parent="."]
+z_index = -1
+width = 4.0
+width_curve = SubResource("Curve_cqmt1")
+default_color = Color(0.184314, 0.141176, 0.203922, 1)
+
+[node name="GuideRing" type="Node2D" parent="."]
+top_level = true
+z_index = -1
+script = ExtResource("2_g7ett")
+radius = 8.0
+point_count = 16
+draw_color = Color(0.183537, 0.140442, 0.203125, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
