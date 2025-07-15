@@ -1,15 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhcqqhdoia5pm"]
+[gd_scene load_steps=26 format=3 uid="uid://bhcqqhdoia5pm"]
 
 [ext_resource type="Script" uid="uid://bg5p2odcq6yu5" path="res://scenes/world/world.gd" id="1_1fp7r"]
 [ext_resource type="PackedScene" uid="uid://dmfb48wuei142" path="res://objects/player/player.tscn" id="1_dphjl"]
-[ext_resource type="Script" uid="uid://ccwtgsgg7yshs" path="res://scenes/world/bomb.gd" id="3_1fp7r"]
-[ext_resource type="Script" uid="uid://q0f520l1to60" path="res://scenes/world/enemy_spawner.gd" id="3_6m72w"]
+[ext_resource type="Script" uid="uid://ccwtgsgg7yshs" path="res://scenes/world/spawners/bomb.gd" id="3_1fp7r"]
+[ext_resource type="Script" uid="uid://ug01ls6ic7jk" path="res://scenes/world/cam.gd" id="3_5qq27"]
+[ext_resource type="Script" uid="uid://dunf58vdk6kkw" path="res://components/misc/anim_curve.gd" id="4_6m72w"]
+[ext_resource type="PackedScene" uid="uid://5fxewqqg45hf" path="res://objects/enemies/bomb/bomb.tscn" id="4_j2gmx"]
+[ext_resource type="Script" uid="uid://bwhigu3gnd5uh" path="res://scenes/world/ui/score.gd" id="5_v5dby"]
+[ext_resource type="PackedScene" uid="uid://dg0m01h6uvkoj" path="res://objects/enemies/basic/basic.tscn" id="6_1yooq"]
+[ext_resource type="Script" uid="uid://cg5afr8wovrrx" path="res://scenes/world/ui/scorebar.gd" id="6_t5ptc"]
+[ext_resource type="PackedScene" uid="uid://fap1fcrh6kxq" path="res://objects/enemies/laser/bomb.tscn" id="7_1yooq"]
+[ext_resource type="Shader" uid="uid://bt3r0q3lu57v2" path="res://resources/shaders/darken_blur.gdshader" id="10_gb53w"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sl2e5"]
+distance = 2.0
 
-[sub_resource type="Curve2D" id="Curve2D_6m72w"]
+[sub_resource type="Curve2D" id="Curve2D_1yooq"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -2, 18, 0, 0, 0, 0, 639, 17, 0, 0, 0, 0, 638, 362, 0, 0, 0, 0, 0, 358, 0, 0, 0, 0, -2, 18)
+"points": PackedVector2Array(0, 0, 0, 0, 1, 20, 0, 0, 0, 0, 635, 23, 0, 0, 0, 0, 636, 357, 0, 0, 0, 0, 4, 359, 0, 0, 0, 0, 1, 20)
 }
 point_count = 5
 
@@ -23,7 +31,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -36,13 +44,91 @@ _data = {
 &"spawn_bomb_test": SubResource("Animation_v5dby")
 }
 
+[sub_resource type="Curve" id="Curve_1fp7r"]
+_limits = [0.0, 1.0, 0.0, 200.0]
+_data = [Vector2(20.6667, 0), 0.0, 0.0, 0, 0, Vector2(20.6939, 0.488347), 0.019713, -0.0576682, 0, 0, Vector2(30.1115, 0.188215), 0.0, 0.0, 0, 0, Vector2(40.8922, 0.288259), 0.0, -0.0237457, 0, 0, Vector2(74.7212, 0.0881706), 0.0, 0.0, 0, 0, Vector2(200, 0.786147), 0.00663566, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_6m72w"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 30, 50, 0, 0, 0, 0, 612, 46, 0, 0, 0, 0, 609, 331, 0, 0, 0, 0, 381, 321, 0, 0, 0, 0, 381.985, 292.133, 0, 0, 0, 0, 524, 293, 0, 0, 0, 0, 519, 71, 0, 0, 0, 0, 128, 81, 0, 0, 0, 0, 136, 289, 0, 0, 0, 0, 299, 289, 0, 0, 0, 0, 300, 317, 0, 0, 0, 0, 30, 316, 0, 0, 0, 0, 30, 50)
+}
+point_count = 13
+
+[sub_resource type="Curve" id="Curve_j2gmx"]
+_limits = [0.0, 10.0, 0.0, 100.0]
+_data = [Vector2(0, 1), 0.0, 0.00505694, 0, 0, Vector2(19.9504, 2.42524), 0.15255, 0.15255, 0, 0, Vector2(20.1983, 0.681619), 0.0, 0.0, 0, 0, Vector2(46.8333, 7.05082), 0.174844, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_gb53w"]
+_limits = [0.0, 1.0, 0.0, 100.0]
+_data = [Vector2(0, 0), 0.0, 0.0642984, 0, 1, Vector2(1.66667, 0.107164), 0.019713, 0.00169784, 0, 0, Vector2(100, 0.0326679), -0.0115823, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_gb53w"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 241, 115, 0, 0, 0, 0, 242, 237, 0, 0, 0, 0, 267, 120, 0, 0, 0, 0, 280, 236, 0, 0, 0, 0, 312, 118, 0, 0, 0, 0, 317, 233, 0, 0, 0, 0, 340, 130, 0, 0, 0, 0, 345, 231, 0, 0, 0, 0, 369, 134, 0, 0, 0, 0, 375, 226, 0, 0, 0, 0, 396, 142, 0, 0, 0, 0, 407, 222, 0, 0, 0, 0, 404, 264, 0, 0, 0, 0, 219, 256, 0, 0, 0, 0, 215, 96, 0, 0, 0, 0, 426, 96, 0, 0, 0, 0, 426, 260)
+}
+point_count = 17
+
+[sub_resource type="Curve" id="Curve_5qq27"]
+_limits = [0.0, 1.0, 0.0, 100.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 1, Vector2(44, 0), 0.0, 0.00810924, 0, 0, Vector2(50, 0.05), 0.00194466, 0.00194466, 0, 0, Vector2(100, 0.15), 0.00218945, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="Animation" id="Animation_gb53w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1yooq"]
+resource_name = "open"
+length = 1.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 1.25),
+"transitions": PackedFloat32Array(0.148651, 1),
+"update": 0,
+"values": [Vector2(2, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5qq27"]
+_data = {
+&"RESET": SubResource("Animation_gb53w"),
+&"open": SubResource("Animation_1yooq")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qq27"]
+shader = ExtResource("10_gb53w")
+shader_parameter/strength = 5.0
+shader_parameter/mix_percentage = 0.0
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_1fp7r")
 
 [node name="Player" parent="." instance=ExtResource("1_dphjl")]
-position = Vector2(271, 174)
+position = Vector2(320, 180)
 
 [node name="FruitRect" type="ReferenceRect" parent="."]
+visible = false
 offset_left = 24.0
 offset_top = 40.0
 offset_right = 616.0
@@ -50,6 +136,7 @@ offset_bottom = 336.0
 mouse_filter = 2
 
 [node name="Border" type="ReferenceRect" parent="."]
+z_index = 51
 offset_left = 16.0
 offset_top = 32.0
 offset_right = 624.0
@@ -60,41 +147,159 @@ border_width = 4.0
 editor_only = false
 
 [node name="Walls" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 3
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
-position = Vector2(16, 32)
+position = Vector2(20, 35)
 rotation = 1.57079
 shape = SubResource("WorldBoundaryShape2D_sl2e5")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
-position = Vector2(624, 32)
+position = Vector2(624, 34)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_sl2e5")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
-position = Vector2(624, 344)
+position = Vector2(622, 344)
 rotation = 4.71238
 shape = SubResource("WorldBoundaryShape2D_sl2e5")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
-position = Vector2(16, 344)
+position = Vector2(16, 342)
 rotation = 6.28318
 shape = SubResource("WorldBoundaryShape2D_sl2e5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 180)
+script = ExtResource("3_5qq27")
 
 [node name="EnemySpawner" type="Node2D" parent="."]
-script = ExtResource("3_6m72w")
 
 [node name="Bomb" type="Path2D" parent="EnemySpawner"]
-curve = SubResource("Curve2D_6m72w")
+curve = SubResource("Curve2D_1yooq")
 script = ExtResource("3_1fp7r")
+scene = ExtResource("4_j2gmx")
+delay_min_max = Vector2(0, 1.5)
+min_player_dist = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EnemySpawner/Bomb"]
 libraries = {
 &"": SubResource("AnimationLibrary_t5ptc")
 }
 autoplay = "spawn_bomb_test"
+speed_scale = 0.0
+
+[node name="Node" type="Node" parent="EnemySpawner/Bomb" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("4_6m72w")
+curve = SubResource("Curve_1fp7r")
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="Basic" type="Path2D" parent="EnemySpawner"]
+curve = SubResource("Curve2D_6m72w")
+script = ExtResource("3_1fp7r")
+scene = ExtResource("6_1yooq")
+group = &"basic"
+max = SubResource("Curve_j2gmx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnemySpawner/Basic"]
+libraries = {
+&"": SubResource("AnimationLibrary_t5ptc")
+}
+autoplay = "spawn_bomb_test"
+speed_scale = 0.0
+
+[node name="Node" type="Node" parent="EnemySpawner/Basic" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("4_6m72w")
+curve = SubResource("Curve_gb53w")
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="LaserBomb" type="Path2D" parent="EnemySpawner"]
+curve = SubResource("Curve2D_gb53w")
+script = ExtResource("3_1fp7r")
+scene = ExtResource("7_1yooq")
+delay_min_max = Vector2(0, 4)
+min_player_dist = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EnemySpawner/LaserBomb"]
+libraries = {
+&"": SubResource("AnimationLibrary_t5ptc")
+}
+autoplay = "spawn_bomb_test"
+speed_scale = 0.0
+
+[node name="Node" type="Node" parent="EnemySpawner/LaserBomb" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("4_6m72w")
+curve = SubResource("Curve_5qq27")
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="ElementScore" type="Control" parent="UI"]
+anchors_preset = 0
+offset_top = 21.0
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="Score" type="RichTextLabel" parent="UI/ElementScore"]
+clip_contents = false
+layout_mode = 0
+offset_left = 14.0
+offset_top = -5.0
+offset_right = 626.0
+offset_bottom = 12.0
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[center]000/020"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("5_v5dby")
+
+[node name="Scorebar" type="ProgressBar" parent="UI/ElementScore"]
+clip_children = 2
+layout_mode = 0
+offset_left = 14.0
+offset_top = -5.0
+offset_right = 627.0
+offset_bottom = 5.0
+max_value = 20.0
+step = 0.0
+show_percentage = false
+script = ExtResource("6_t5ptc")
+
+[node name="Score" type="RichTextLabel" parent="UI/ElementScore/Scorebar"]
+visible = false
+clip_contents = false
+layout_mode = 0
+offset_right = 612.0
+offset_bottom = 17.0
+theme_override_colors/default_color = Color(0.117647, 0.101961, 0.12549, 1)
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[center]000/020"
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("5_v5dby")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/ElementScore"]
+libraries = {
+&"": SubResource("AnimationLibrary_5qq27")
+}
+autoplay = "open"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = 50
+material = SubResource("ShaderMaterial_5qq27")
+offset_left = 18.0
+offset_top = 34.0
+offset_right = 622.0
+offset_bottom = 342.0
+mouse_filter = 2

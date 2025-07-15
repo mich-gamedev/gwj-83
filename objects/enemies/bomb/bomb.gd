@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
 var START_SPEED := randf_range(320, 512)
-const GROUPS = [&"player", &"player", &"player", &"player_fruit"]
+const GROUPS = [&"player", &"player", &"player", &"player_fruit", &"player_node"]
 
 @onready var line: Polygon2D = $Node2D/Line2D
 
 func _ready() -> void:
 	await get_tree().process_frame
-	var target : Node2D = get_tree().get_first_node_in_group(GROUPS.pick_random())
+	var target : Node2D = get_tree().get_nodes_in_group(GROUPS.pick_random()).pick_random()
 	velocity = global_position.direction_to(target.global_position).rotated(deg_to_rad(randf_range(-10, 10))) * START_SPEED
 	line.rotation = randf() * TAU
 	await get_tree().create_timer(.33).timeout

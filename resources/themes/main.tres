@@ -1,0 +1,55 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cmnrdfe6jtnvd"]
+
+[ext_resource type="FontFile" uid="uid://cckal1yyictr5" path="res://assets/fonts/Rubik/static/Rubik-Italic.ttf" id="1_h8plf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0dtgv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lhqq7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_whpug"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yn3xj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nis3q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dtgv"]
+bg_color = Color(0.964706, 0.984314, 0.85098, 1)
+skew = Vector2(0.2, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_h8plf"]
+color = Color(0.184314, 0.141176, 0.203922, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h8plf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhqq7"]
+bg_color = Color(0.964706, 0.984314, 0.85098, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[resource]
+default_font = ExtResource("1_h8plf")
+default_font_size = 16
+Button/styles/disabled = SubResource("StyleBoxEmpty_0dtgv")
+Button/styles/focus = SubResource("StyleBoxEmpty_lhqq7")
+Button/styles/hover = SubResource("StyleBoxEmpty_whpug")
+Button/styles/normal = SubResource("StyleBoxEmpty_yn3xj")
+Button/styles/pressed = SubResource("StyleBoxEmpty_nis3q")
+ButtonPanel/base_type = &"Panel"
+ButtonPanel/styles/panel = SubResource("StyleBoxFlat_0dtgv")
+HSeparator/styles/separator = SubResource("StyleBoxLine_h8plf")
+Label/colors/font_color = Color(0.964706, 0.984314, 0.85098, 1)
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_h8plf")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_lhqq7")
+RichTextLabel/colors/default_color = Color(0.964706, 0.984314, 0.85098, 1)
+RichTextLabel/constants/line_separation = 2
