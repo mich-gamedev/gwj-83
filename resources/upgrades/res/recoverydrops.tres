@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://bjdii322lmoiv"]
+
+[ext_resource type="Script" uid="uid://o3hrhk46aypa" path="res://resources/upgrades/upgrade.gd" id="1_dw7yq"]
+
+[resource]
+script = ExtResource("1_dw7yq")
+icon = "RecoveryDrops"
+title = "Skeleton2D"
+desc = "freed nodes may drop [color=#4ae3bf]pears[/color]."
+desc_post_purchase = "increases chance of freed nodes dropping [color=#4ae3bf]pears[/color]."
+stats = Dictionary[StringName, String]({
+&"repair_chance": "+0.2"
+})
+metadata/_custom_type_script = "uid://o3hrhk46aypa"

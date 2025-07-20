@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://bnkvul6t3a35f"]
+
+[ext_resource type="Script" uid="uid://o3hrhk46aypa" path="res://resources/upgrades/upgrade.gd" id="1_l41a0"]
+
+[resource]
+script = ExtResource("1_l41a0")
+icon = ""
+title = ""
+desc = ""
+desc_post_purchase = ""
+stats = Dictionary[StringName, String]({
+&"node_dist": "=64.0",
+&"pears": "=1",
+&"repair_chance": "=0.0",
+&"upgrade_speed": "=1.0"
+})
+metadata/_custom_type_script = "uid://o3hrhk46aypa"

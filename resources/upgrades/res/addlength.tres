@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://c7dpb0y7kkpfp"]
+
+[ext_resource type="Script" uid="uid://o3hrhk46aypa" path="res://resources/upgrades/upgrade.gd" id="1_kr0jk"]
+
+[resource]
+script = ExtResource("1_kr0jk")
+icon = "AddNodeLength"
+title = "LineEdit"
+desc = "Increases max distance between nodes."
+desc_post_purchase = "Increases max distance between nodes."
+stats = Dictionary[StringName, String]({
+&"node_dist": "+8.0"
+})
+metadata/_custom_type_script = "uid://o3hrhk46aypa"

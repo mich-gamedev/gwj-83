@@ -1,16 +1,33 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2nvot4dg0gpw"]
+[gd_scene load_steps=27 format=3 uid="uid://c2nvot4dg0gpw"]
 
 [ext_resource type="Script" uid="uid://eg8ymx01ost6" path="res://scenes/main_menu/buttons/button.gd" id="1_0ebjn"]
 [ext_resource type="FontFile" uid="uid://cckal1yyictr5" path="res://assets/fonts/Rubik/static/Rubik-Italic.ttf" id="1_fsom3"]
 [ext_resource type="Script" uid="uid://crxleg5mafyry" path="res://scenes/main_menu/main_menu.gd" id="1_ob46e"]
+[ext_resource type="Script" uid="uid://bqtunuostwjbp" path="res://scenes/main_menu/flavor_text.gd" id="3_x2yjq"]
 [ext_resource type="Script" uid="uid://b0bn33ouc8kb" path="res://scenes/main_menu/border.gd" id="4_uqeha"]
+[ext_resource type="Shader" uid="uid://bt3r0q3lu57v2" path="res://resources/shaders/darken_blur.gdshader" id="5_lqpn7"]
+[ext_resource type="AudioStream" uid="uid://ce4wcvcaioycm" path="res://assets/sfx/ui/button_hover.wav" id="5_qel0l"]
 [ext_resource type="Script" uid="uid://be5wndlh6k5ry" path="res://scenes/main_menu/buttons/checkbox.gd" id="5_wem23"]
 [ext_resource type="FontFile" uid="uid://huci6pay5tuq" path="res://assets/fonts/Rubik/static/Rubik-BoldItalic.ttf" id="6_3ovsr"]
 [ext_resource type="Script" uid="uid://bhu4nmslr1bsb" path="res://scenes/main_menu/buttons/spinbox.gd" id="6_5seab"]
+[ext_resource type="AudioStream" uid="uid://bd265nwamr6bq" path="res://assets/sfx/ui/button_press.wav" id="6_rrgl4"]
 [ext_resource type="Script" uid="uid://c442ekf8csout" path="res://scenes/main_menu/buttons/button_bounce.gd" id="8_4xg86"]
 [ext_resource type="Script" uid="uid://drb1n8m4umx33" path="res://scenes/main_menu/label.gd" id="9_thkx5"]
+[ext_resource type="AudioStream" uid="uid://dw4eu7ukcaaiu" path="res://assets/sfx/ui/panel_open.wav" id="14_dn3lk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ebjn"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rrgl4"]
+random_pitch = 1.05
+random_volume_offset_db = 5.0
+streams_count = 1
+stream_0/stream = ExtResource("5_qel0l")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dn3lk"]
+random_pitch = 1.05
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("6_rrgl4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m114p"]
 bg_color = Color(0.87451, 0.309804, 0.803922, 1)
 skew = Vector2(0.2, 0)
 corner_radius_top_left = 2
@@ -105,6 +122,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../ColorRect:material:shader_parameter/strength")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../OpenPanel:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_5seab"]
 resource_name = "close"
@@ -194,6 +235,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(1e-05, 1), Vector2(1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../ColorRect:material:shader_parameter/strength")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [2.0, 0.1]
+}
 
 [sub_resource type="Animation" id="Animation_uqeha"]
 resource_name = "config"
@@ -231,7 +284,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3.13834, 1),
+"transitions": PackedFloat32Array(-4.2871, 1),
 "update": 0,
 "values": [0.0, 280.0]
 }
@@ -255,7 +308,7 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3.13834, 1),
+"transitions": PackedFloat32Array(-4.2871, 1),
 "update": 0,
 "values": [320.0, 180.0]
 }
@@ -282,6 +335,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(0.138696, 1),
 "update": 0,
 "values": [0.0, 4.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../ColorRect:material:shader_parameter/strength")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.1, 2.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../OpenPanel:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_3ovsr"]
@@ -371,6 +448,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [0.0, 4.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../ColorRect:material:shader_parameter/strength")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.1, 2.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../OpenPanel:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5seab"]
 _data = {
@@ -379,6 +480,11 @@ _data = {
 &"config": SubResource("Animation_uqeha"),
 &"play": SubResource("Animation_3ovsr")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qel0l"]
+shader = ExtResource("5_lqpn7")
+shader_parameter/strength = 0.1
+shader_parameter/mix_percentage = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqeha"]
 bg_color = Color(0.117647, 0.101961, 0.12549, 1)
@@ -427,17 +533,20 @@ grow_vertical = 2
 
 [node name="FlavorText" type="Label" parent="SlideLeft"]
 layout_mode = 2
-offset_left = 32.0
-offset_top = 115.0
-offset_right = 362.0
-offset_bottom = 129.444
+offset_left = 33.0
+offset_top = 66.0
+offset_right = 331.0
+offset_bottom = 134.0
 theme_override_fonts/font = ExtResource("1_fsom3")
-theme_override_font_sizes/font_size = 12
 text = "fun fact: the original snake game was called \"worm\""
+vertical_alignment = 2
 autowrap_mode = 2
+visible_characters_behavior = 1
+script = ExtResource("3_x2yjq")
+strings = Array[String](["fun fact: the original snake game was called \"worm\"", "fun fact: this game doesn't use a single texture", "fun fact: it says \"gullible\" in your boot", "fun fact: rattlesnakes grow their rattler by 1 ring each time they shed", "fun fact: \"snake\" comes from the root \"sneg-\", meaning \"to crawl / creeping thing\"", "fun fact: there is a genus of snakes that can glide/fly between trees", "fun fact: snakes can rarely have 2 heads", "fun fact: the most popular indie game is Oregon Trail, unless you count Minecraft.", "fun fact: create_tween() is awesome", "not so fun fact: worms become paralyzed if they're exposed to light for too long", "fun fact: worms have 5 hearts", "fun fact: worms are older than dinosaurs"])
 
 [node name="MarginContainer" type="MarginContainer" parent="SlideLeft"]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -450,12 +559,14 @@ theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SlideLeft/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 6
 alignment = 1
 
 [node name="Play" type="Button" parent="SlideLeft/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 script = ExtResource("1_0ebjn")
+do_start_anim = true
 
 [node name="Label" type="Label" parent="SlideLeft/MarginContainer/VBoxContainer/Play"]
 layout_mode = 1
@@ -465,17 +576,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_fsom3")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "> play.exe"
 
 [node name="ColorRect" type="Panel" parent="SlideLeft/MarginContainer/VBoxContainer/Play/Label"]
 clip_children = 2
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = -96.0
-grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_type_variation = &"ButtonPanel"
@@ -491,13 +599,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.117647, 0.101961, 0.12549, 1)
 theme_override_fonts/font = ExtResource("1_fsom3")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "> play.exe"
+
+[node name="Hover" type="AudioStreamPlayer" parent="SlideLeft/MarginContainer/VBoxContainer/Play"]
+stream = SubResource("AudioStreamRandomizer_rrgl4")
+pitch_scale = 0.98
+
+[node name="Press" type="AudioStreamPlayer" parent="SlideLeft/MarginContainer/VBoxContainer/Play"]
+stream = SubResource("AudioStreamRandomizer_dn3lk")
 
 [node name="Config" type="Button" parent="SlideLeft/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 script = ExtResource("1_0ebjn")
+do_start_anim = true
 
 [node name="Label" type="Label" parent="SlideLeft/MarginContainer/VBoxContainer/Config"]
 layout_mode = 1
@@ -507,17 +623,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_fsom3")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "> config.ini"
 
 [node name="ColorRect" type="Panel" parent="SlideLeft/MarginContainer/VBoxContainer/Config/Label"]
 clip_children = 2
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = -96.0
-grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_type_variation = &"ButtonPanel"
@@ -533,13 +646,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.117647, 0.101961, 0.12549, 1)
 theme_override_fonts/font = ExtResource("1_fsom3")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "> config.ini"
+
+[node name="Hover" type="AudioStreamPlayer" parent="SlideLeft/MarginContainer/VBoxContainer/Config"]
+stream = SubResource("AudioStreamRandomizer_rrgl4")
+pitch_scale = 0.98
+
+[node name="Press" type="AudioStreamPlayer" parent="SlideLeft/MarginContainer/VBoxContainer/Config"]
+stream = SubResource("AudioStreamRandomizer_dn3lk")
 
 [node name="Credits" type="Button" parent="SlideLeft/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 script = ExtResource("1_0ebjn")
+do_start_anim = true
 
 [node name="Label" type="Label" parent="SlideLeft/MarginContainer/VBoxContainer/Credits"]
 layout_mode = 1
@@ -549,17 +670,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_fsom3")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "> credits.md"
 
 [node name="ColorRect" type="Panel" parent="SlideLeft/MarginContainer/VBoxContainer/Credits/Label"]
 clip_children = 2
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = -96.0
-grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_type_variation = &"ButtonPanel"
@@ -575,13 +693,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.117647, 0.101961, 0.12549, 1)
 theme_override_fonts/font = ExtResource("1_fsom3")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "> credits.md"
+
+[node name="Hover" type="AudioStreamPlayer" parent="SlideLeft/MarginContainer/VBoxContainer/Credits"]
+stream = SubResource("AudioStreamRandomizer_rrgl4")
+pitch_scale = 0.98
+
+[node name="Press" type="AudioStreamPlayer" parent="SlideLeft/MarginContainer/VBoxContainer/Credits"]
+stream = SubResource("AudioStreamRandomizer_dn3lk")
 
 [node name="Quit" type="Button" parent="SlideLeft/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 script = ExtResource("1_0ebjn")
+do_start_anim = true
 
 [node name="Label" type="Label" parent="SlideLeft/MarginContainer/VBoxContainer/Quit"]
 layout_mode = 1
@@ -591,21 +717,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_fsom3")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "> quit.bin"
 
 [node name="ColorRect" type="Panel" parent="SlideLeft/MarginContainer/VBoxContainer/Quit/Label"]
 clip_children = 2
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = -96.0
-grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_type_variation = &"ButtonPanel"
-theme_override_styles/panel = SubResource("StyleBoxFlat_0ebjn")
+theme_override_styles/panel = SubResource("StyleBoxFlat_m114p")
 
 [node name="Label" type="Label" parent="SlideLeft/MarginContainer/VBoxContainer/Quit/Label/ColorRect"]
 visible = false
@@ -618,14 +741,31 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.117647, 0.101961, 0.12549, 1)
 theme_override_fonts/font = ExtResource("1_fsom3")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "> quit.bin"
+
+[node name="Hover" type="AudioStreamPlayer" parent="SlideLeft/MarginContainer/VBoxContainer/Quit"]
+stream = SubResource("AudioStreamRandomizer_rrgl4")
+pitch_scale = 0.98
+
+[node name="Press" type="AudioStreamPlayer" parent="SlideLeft/MarginContainer/VBoxContainer/Quit"]
+stream = SubResource("AudioStreamRandomizer_dn3lk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SlideLeft"]
 libraries = {
 &"": SubResource("AnimationLibrary_5seab")
 }
 autoplay = "RESET"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_qel0l")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Border" type="ReferenceRect" parent="."]
 layout_mode = 0
@@ -683,6 +823,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 toggle_mode = true
 script = ExtResource("5_wem23")
+responsible_property = "vsync"
 
 [node name="Control" type="Control" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Vsync/Button"]
 layout_mode = 1
@@ -716,6 +857,13 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5seab")
 
+[node name="Hover" type="AudioStreamPlayer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Vsync/Button"]
+stream = SubResource("AudioStreamRandomizer_rrgl4")
+pitch_scale = 0.98
+
+[node name="Press" type="AudioStreamPlayer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Vsync/Button"]
+stream = SubResource("AudioStreamRandomizer_dn3lk")
+
 [node name="Fullscreen" type="HBoxContainer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -730,6 +878,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 toggle_mode = true
 script = ExtResource("5_wem23")
+responsible_property = "fullscreen"
 
 [node name="Control" type="Control" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Fullscreen/Button"]
 layout_mode = 1
@@ -763,32 +912,40 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5seab")
 
+[node name="Hover" type="AudioStreamPlayer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Fullscreen/Button"]
+stream = SubResource("AudioStreamRandomizer_rrgl4")
+pitch_scale = 0.98
+
+[node name="Press" type="AudioStreamPlayer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Fullscreen/Button"]
+stream = SubResource("AudioStreamRandomizer_dn3lk")
+
 [node name="HSeparator" type="HSeparator" parent="Border/ConfigPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer"]
+[node name="Music" type="HBoxContainer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Music"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 12
 text = "music"
 
-[node name="Spinbox" type="Control" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Spinbox" type="Control" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Music"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 script = ExtResource("6_5seab")
+responsible_property = "music"
 
-[node name="Control" type="Control" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/HBoxContainer/Spinbox"]
+[node name="Control" type="Control" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Music/Spinbox"]
 anchors_preset = 0
 offset_left = -10.0002
 offset_top = -5.00003
 offset_right = 29.9998
 offset_bottom = 35.0
 
-[node name="Minus" type="Button" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/HBoxContainer/Spinbox/Control"]
+[node name="Minus" type="Button" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Music/Spinbox/Control"]
 layout_mode = 2
 offset_right = 8.0
 offset_bottom = 20.0
@@ -801,7 +958,7 @@ theme_override_fonts/font = ExtResource("6_3ovsr")
 text = "-"
 script = ExtResource("8_4xg86")
 
-[node name="Label" type="Label" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/HBoxContainer/Spinbox"]
+[node name="Label" type="Label" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Music/Spinbox"]
 layout_mode = 2
 offset_left = 2.0
 offset_top = -4.0
@@ -811,14 +968,14 @@ pivot_offset = Vector2(10, 9.63)
 text = "05"
 horizontal_alignment = 1
 
-[node name="Control2" type="Control" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/HBoxContainer/Spinbox"]
+[node name="Control2" type="Control" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Music/Spinbox"]
 anchors_preset = 0
 offset_left = 26.0
 offset_top = -5.0
 offset_right = 66.0
 offset_bottom = 35.0
 
-[node name="Plus" type="Button" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/HBoxContainer/Spinbox/Control2"]
+[node name="Plus" type="Button" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Music/Spinbox/Control2"]
 layout_mode = 2
 offset_right = 10.0
 offset_bottom = 20.0
@@ -830,6 +987,86 @@ theme_override_colors/font_focus_color = Color(0.290196, 0.890196, 0.74902, 1)
 theme_override_fonts/font = ExtResource("6_3ovsr")
 text = "+"
 script = ExtResource("8_4xg86")
+
+[node name="Hover" type="AudioStreamPlayer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Music/Spinbox"]
+stream = SubResource("AudioStreamRandomizer_rrgl4")
+pitch_scale = 0.98
+
+[node name="Press" type="AudioStreamPlayer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Music/Spinbox"]
+stream = SubResource("AudioStreamRandomizer_dn3lk")
+
+[node name="SFX" type="HBoxContainer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/SFX"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "sfx"
+
+[node name="Spinbox" type="Control" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/SFX"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+script = ExtResource("6_5seab")
+responsible_property = "sfx"
+
+[node name="Control" type="Control" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/SFX/Spinbox"]
+anchors_preset = 0
+offset_left = -10.0002
+offset_top = -5.00003
+offset_right = 29.9998
+offset_bottom = 35.0
+
+[node name="Minus" type="Button" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/SFX/Spinbox/Control"]
+layout_mode = 2
+offset_right = 8.0
+offset_bottom = 20.0
+pivot_offset = Vector2(4, 10)
+theme_override_colors/font_disabled_color = Color(0.184314, 0.141176, 0.203922, 1)
+theme_override_colors/font_hover_color = Color(0.964706, 0.984314, 0.85098, 1)
+theme_override_colors/font_color = Color(0.87451, 0.309804, 0.803922, 1)
+theme_override_colors/font_focus_color = Color(0.87451, 0.309804, 0.803922, 1)
+theme_override_fonts/font = ExtResource("6_3ovsr")
+text = "-"
+script = ExtResource("8_4xg86")
+
+[node name="Label" type="Label" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/SFX/Spinbox"]
+layout_mode = 2
+offset_left = 2.0
+offset_top = -4.0
+offset_right = 22.0
+offset_bottom = 15.2593
+pivot_offset = Vector2(10, 9.63)
+text = "05"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/SFX/Spinbox"]
+anchors_preset = 0
+offset_left = 26.0
+offset_top = -5.0
+offset_right = 66.0
+offset_bottom = 35.0
+
+[node name="Plus" type="Button" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/SFX/Spinbox/Control2"]
+layout_mode = 2
+offset_right = 10.0
+offset_bottom = 20.0
+pivot_offset = Vector2(5, 10)
+theme_override_colors/font_disabled_color = Color(0.184314, 0.141176, 0.203922, 1)
+theme_override_colors/font_hover_color = Color(0.964706, 0.984314, 0.85098, 1)
+theme_override_colors/font_color = Color(0.290196, 0.890196, 0.74902, 1)
+theme_override_colors/font_focus_color = Color(0.290196, 0.890196, 0.74902, 1)
+theme_override_fonts/font = ExtResource("6_3ovsr")
+text = "+"
+script = ExtResource("8_4xg86")
+
+[node name="Hover" type="AudioStreamPlayer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/SFX/Spinbox"]
+stream = SubResource("AudioStreamRandomizer_rrgl4")
+pitch_scale = 0.98
+
+[node name="Press" type="AudioStreamPlayer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/SFX/Spinbox"]
+stream = SubResource("AudioStreamRandomizer_dn3lk")
 
 [node name="Back" type="Button" parent="Border/ConfigPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(48, 16)
@@ -847,7 +1084,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_fsom3")
 theme_override_font_sizes/font_size = 12
-text = "> back"
+text = "> apply"
 
 [node name="ColorRect" type="Panel" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Back/Label"]
 clip_children = 2
@@ -870,7 +1107,14 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.117647, 0.101961, 0.12549, 1)
 theme_override_fonts/font = ExtResource("1_fsom3")
 theme_override_font_sizes/font_size = 12
-text = "> back"
+text = "> apply"
+
+[node name="Hover" type="AudioStreamPlayer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Back"]
+stream = SubResource("AudioStreamRandomizer_rrgl4")
+pitch_scale = 0.98
+
+[node name="Press" type="AudioStreamPlayer" parent="Border/ConfigPanel/MarginContainer/VBoxContainer/Back"]
+stream = SubResource("AudioStreamRandomizer_dn3lk")
 
 [node name="CreditsPanel" type="Panel" parent="Border"]
 unique_name_in_owner = true
@@ -908,8 +1152,12 @@ bbcode_enabled = true
 text = "made by [color=#4ae3bf][url=https://michdev.nekoweb.org/index.html]_michdev[/url][/color], for the godot wild jam #83 in 10 days.
 
 [ul bullet=> ]
-engine: godot v4.4.1.stable
+engine: [color=#4ae3bf][url=https://godotengine.org/license/]godot v4.4.1.stable (MIT)[/url][/color]
 pallete: [color=#4ae3bf][url=https://lospec.com/palette-list/slicko-8]slicko-8[/url][/color]
+font: [color=#4ae3bf][url=https://fonts.google.com/specimen/Rubik/license]rubik (OFL)[/url][/color]
+[/ul]
+
+source code on [color=#4ae3bf][url=https://github.com/mich-gamedev/gwj-83]github[/url][/color]
 "
 script = ExtResource("9_thkx5")
 
@@ -953,6 +1201,17 @@ theme_override_colors/font_color = Color(0.117647, 0.101961, 0.12549, 1)
 theme_override_fonts/font = ExtResource("1_fsom3")
 theme_override_font_sizes/font_size = 12
 text = "> back"
+
+[node name="Hover" type="AudioStreamPlayer" parent="Border/CreditsPanel/MarginContainer/VBoxContainer/Back"]
+stream = SubResource("AudioStreamRandomizer_rrgl4")
+pitch_scale = 0.98
+
+[node name="Press" type="AudioStreamPlayer" parent="Border/CreditsPanel/MarginContainer/VBoxContainer/Back"]
+stream = SubResource("AudioStreamRandomizer_dn3lk")
+
+[node name="OpenPanel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_dn3lk")
+bus = &"SFX"
 
 [connection signal="pressed" from="SlideLeft/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="SlideLeft/MarginContainer/VBoxContainer/Config" to="." method="_on_config_pressed"]

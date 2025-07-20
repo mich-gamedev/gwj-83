@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://ovp0rlc8luqb"]
+
+[ext_resource type="Script" uid="uid://o3hrhk46aypa" path="res://resources/upgrades/upgrade.gd" id="1_wqrnq"]
+
+[resource]
+script = ExtResource("1_wqrnq")
+icon = "AddPear"
+title = "BackBufferCopy"
+desc = "Spawns another [color=#4ae3bf]pear[/color]. 
+(spawns after eating next [color=#4ae3bf]pear[/color])"
+desc_post_purchase = "Spawns another [color=#4ae3bf]pear[/color]. 
+(spawns after eating next [color=#4ae3bf]pear[/color])"
+stats = Dictionary[StringName, String]({
+&"pears": "+1"
+})
+metadata/_custom_type_script = "uid://o3hrhk46aypa"

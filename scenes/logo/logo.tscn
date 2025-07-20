@@ -1,0 +1,152 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd4liabyukm04"]
+
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="1_auvok"]
+[ext_resource type="FontFile" uid="uid://b0uppfyvycoa1" path="res://assets/fonts/Rubik/static/Rubik-MediumItalic.ttf" id="2_xx8g4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Line2D2" type="Line2D" parent="."]
+points = PackedVector2Array(140, 143, 160, 135)
+width = 2.0
+default_color = Color(0.290196, 0.890196, 0.74902, 1)
+
+[node name="Line2D3" type="Line2D" parent="."]
+points = PackedVector2Array(184, 188, 206, 176)
+width = 2.0
+default_color = Color(0.290196, 0.890196, 0.74902, 1)
+
+[node name="Line2D4" type="Line2D" parent="."]
+points = PackedVector2Array(401, 166, 416, 161, 432, 148, 421, 126)
+width = 2.0
+default_color = Color(0.290196, 0.890196, 0.74902, 1)
+
+[node name="RingDraw" type="Node2D" parent="."]
+position = Vector2(140, 143)
+script = ExtResource("1_auvok")
+width = 2.0
+radius = 6.0
+draw_color = Color(0.290196, 0.890196, 0.74902, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw6" type="Node2D" parent="."]
+position = Vector2(206, 176)
+script = ExtResource("1_auvok")
+width = 2.0
+radius = 6.0
+draw_color = Color(0.290196, 0.890196, 0.74902, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw7" type="Node2D" parent="."]
+position = Vector2(416, 161)
+script = ExtResource("1_auvok")
+width = 2.0
+radius = 6.0
+draw_color = Color(0.290196, 0.890196, 0.74902, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw8" type="Node2D" parent="."]
+position = Vector2(432, 148)
+script = ExtResource("1_auvok")
+width = 2.0
+radius = 6.0
+draw_color = Color(0.290196, 0.890196, 0.74902, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw" type="Node2D" parent="RingDraw8"]
+position = Vector2(-11, -22)
+script = ExtResource("1_auvok")
+width = 2.0
+radius = 8.0
+draw_color = Color(0.290196, 0.890196, 0.74902, 1)
+fill_color = Color(0.290196, 0.890196, 0.74902, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 113.0
+offset_top = 150.0
+offset_right = 397.0
+offset_bottom = 172.0
+color = Color(0.117647, 0.101961, 0.12549, 1)
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = 107.0
+offset_top = 133.0
+offset_right = 405.0
+offset_bottom = 190.0
+theme_override_colors/font_outline_color = Color(0.117647, 0.101961, 0.12549, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("2_xx8g4")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "N0DE[color=2f2434].[/color]SN4K3"
+fit_content = true
+autowrap_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="RingDraw9" type="Node2D" parent="."]
+position = Vector2(170, 154)
+script = ExtResource("1_auvok")
+width = 0.0
+radius = 9.0
+draw_color = Color(0.117647, 0.101961, 0.12549, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw10" type="Node2D" parent="."]
+position = Vector2(157, 179)
+script = ExtResource("1_auvok")
+width = 0.0
+radius = 9.0
+draw_color = Color(0.117647, 0.101961, 0.12549, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Line2D5" type="Line2D" parent="."]
+points = PackedVector2Array(160, 135, 170, 154, 157, 179, 184, 188)
+width = 6.0
+default_color = Color(0.117647, 0.101961, 0.12549, 1)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(160, 135, 170, 154, 157, 179, 184, 188)
+width = 2.0
+default_color = Color(0.290196, 0.890196, 0.74902, 1)
+
+[node name="RingDraw2" type="Node2D" parent="."]
+position = Vector2(160, 135)
+script = ExtResource("1_auvok")
+width = 2.0
+radius = 6.0
+draw_color = Color(0.290196, 0.890196, 0.74902, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw3" type="Node2D" parent="."]
+position = Vector2(170, 154)
+script = ExtResource("1_auvok")
+width = 2.0
+radius = 6.0
+draw_color = Color(0.290196, 0.890196, 0.74902, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw4" type="Node2D" parent="."]
+position = Vector2(157, 179)
+script = ExtResource("1_auvok")
+width = 2.0
+radius = 6.0
+draw_color = Color(0.290196, 0.890196, 0.74902, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw5" type="Node2D" parent="."]
+position = Vector2(184, 188)
+script = ExtResource("1_auvok")
+width = 2.0
+radius = 6.0
+draw_color = Color(0.290196, 0.890196, 0.74902, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"

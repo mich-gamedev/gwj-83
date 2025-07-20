@@ -1,4 +1,4 @@
-@tool extends ReferenceRect
+@tool extends Control
 
 @export var width: float:
 	set(v):

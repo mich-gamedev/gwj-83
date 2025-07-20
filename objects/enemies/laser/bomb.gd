@@ -24,6 +24,9 @@ func kill() -> void:
 	stop_moving_laser = true
 	var coll = ray.get_collider()
 	if coll is PlayerNode:
-		Player.kill_node(coll)
+		Player.kill_node(coll, self)
 	await anim.animation_finished
+	queue_free()
+
+func _kill() -> void:
 	queue_free()

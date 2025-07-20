@@ -305,6 +305,7 @@ _data = {
 
 [node name="Area2D" type="Area2D" groups=["player_fruit"]]
 script = ExtResource("1_oqai8")
+metadata/spawn_fruit = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_d76me")

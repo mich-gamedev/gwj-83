@@ -6,6 +6,8 @@ class_name PlayerNode extends Area2D
 var elapsed := randf_range(0, 10)
 var origin := Vector2(-1, -1)
 
+var fruit_scene : PackedScene = load("res://objects/fruit/fruit.tscn")
+
 func _ready() -> void:
 	Player.signals.node_spawned.connect(_node_spawned, CONNECT_DEFERRED)
 	await get_tree().process_frame
@@ -25,6 +27,6 @@ func _physics_process(delta: float) -> void:
 	if origin != Vector2(-1, -1):
 		ring_draw.global_position = origin + Vector2(sin(elapsed) * 2, cos(elapsed) * 4)
 
-func _node_spawned(node: PlayerNode) -> void:
+func _node_spawned(_node: PlayerNode) -> void:
 	if Player.nodes.find(self) == 0:
 		coll_shape.disabled = true

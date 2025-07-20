@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://q7r4n5eh1vfx"]
+
+[ext_resource type="Script" uid="uid://o3hrhk46aypa" path="res://resources/upgrades/upgrade.gd" id="1_lgto4"]
+
+[resource]
+script = ExtResource("1_lgto4")
+icon = "LowerUpgradeWait"
+title = "ProgressBar"
+desc = "Reduces amount of [color=#4ae3bf]pears[/color] needed to get to the [color=#e8ea60]shop[/color]."
+desc_post_purchase = "Reduces amount of [color=#4ae3bf]pears[/color] needed to get to the [color=#e8ea60]shop[/color]."
+stats = Dictionary[StringName, String]({})
+metadata/_custom_type_script = "uid://o3hrhk46aypa"

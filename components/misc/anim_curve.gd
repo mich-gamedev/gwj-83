@@ -6,5 +6,5 @@ class_name AnimationCurve extends Node
 func _ready() -> void:
 	Player.signals.fruit_collected.connect(_fruit_collected)
 
-func _fruit_collected(fruit: Area2D) -> void:
+func _fruit_collected(_fruit: Area2D) -> void:
 	animation_player.speed_scale = curve.sample_baked(Player.score)

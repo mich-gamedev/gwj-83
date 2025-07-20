@@ -1,0 +1,902 @@
+[gd_scene load_steps=22 format=3 uid="uid://ci5mmvkemnae4"]
+
+[ext_resource type="Script" uid="uid://cgf6lnee443it" path="res://objects/upgrades/upgrade_bubble.gd" id="1_rluat"]
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="1_wrddt"]
+[ext_resource type="Script" uid="uid://b0bn33ouc8kb" path="res://scenes/main_menu/border.gd" id="2_34p4x"]
+[ext_resource type="Script" uid="uid://bxrm6e3yo3xb8" path="res://components/misc/randomize_speed.gd" id="3_36tnm"]
+[ext_resource type="Script" uid="uid://eg8ymx01ost6" path="res://scenes/main_menu/buttons/button.gd" id="4_xll01"]
+[ext_resource type="FontFile" uid="uid://cckal1yyictr5" path="res://assets/fonts/Rubik/static/Rubik-Italic.ttf" id="5_36tnm"]
+[ext_resource type="AudioStream" uid="uid://ce4wcvcaioycm" path="res://assets/sfx/ui/button_hover.wav" id="7_8jqgk"]
+[ext_resource type="AudioStream" uid="uid://bd265nwamr6bq" path="res://assets/sfx/ui/button_press.wav" id="8_ehi3j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8jqgk"]
+radius = 40.0
+
+[sub_resource type="Animation" id="Animation_34p4x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Middle:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(22, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Middle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11, -8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SideOutline:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(26, 8)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SideOutline:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13, -8)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bottom:width")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Top:width")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bubble:width")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Bubble:radius")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Bubble/Icons:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Bubble/Icons:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wrddt"]
+resource_name = "spawn"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.287175, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Middle:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.287175, 1),
+"update": 0,
+"values": [Vector2(22, 0), Vector2(22, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Middle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.287175, 1),
+"update": 0,
+"values": [Vector2(-11, 0), Vector2(-11, -8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SideOutline:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.287175, 1),
+"update": 0,
+"values": [Vector2(24, 0), Vector2(26, 8)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SideOutline:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.287175, 1),
+"update": 0,
+"values": [Vector2(-12, 0), Vector2(-13, -8)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bottom:width")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2.21914, 1),
+"update": 0,
+"values": [0.0, 2.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Top:width")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.287175, 1),
+"update": 0,
+"values": [0.0, 2.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bubble:width")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [0.0, 4.0, 2.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Bubble:radius")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-3.24901, 1),
+"update": 0,
+"values": [16.0, 10.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Bubble/Icons:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2.46229, 1),
+"update": 0,
+"values": [Vector2(0, 1.75), Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Bubble/Icons:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2.46229, 1),
+"update": 0,
+"values": [0.785398, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rluat"]
+_data = {
+&"RESET": SubResource("Animation_34p4x"),
+&"spawn": SubResource("Animation_wrddt")
+}
+
+[sub_resource type="Animation" id="Animation_alkca"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bubble:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bubble/Icons:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rluat"]
+resource_name = "sway"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bubble:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, -25), Vector2(0, -28), Vector2(0, -25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bubble/Icons:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xll01"]
+_data = {
+&"RESET": SubResource("Animation_alkca"),
+&"sway": SubResource("Animation_rluat")
+}
+
+[sub_resource type="Animation" id="Animation_36tnm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:border_width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:height")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:pos_x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xll01"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:border_width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.0980732, 1),
+"update": 0,
+"values": [0.0, 4.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-4.92458, 1),
+"update": 0,
+"values": [0.0, 200.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:height")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.148651, 1),
+"update": 0,
+"values": [0.0, 120.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:pos_x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-4.92458, 1),
+"update": 0,
+"values": [0.0, -100.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8c0l6"]
+_data = {
+&"RESET": SubResource("Animation_36tnm"),
+&"open": SubResource("Animation_xll01")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xll01"]
+bg_color = Color(0.290196, 0.890196, 0.74902, 1)
+skew = Vector2(0.2, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pldcb"]
+random_pitch = 1.05
+random_volume_offset_db = 5.0
+streams_count = 1
+stream_0/stream = ExtResource("7_8jqgk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2445c"]
+random_pitch = 1.05
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("8_ehi3j")
+
+[node name="Area2D" type="Area2D" groups=["upgrade"]]
+z_index = -1
+script = ExtResource("1_rluat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8jqgk")
+
+[node name="SideOutline" type="ColorRect" parent="."]
+offset_left = -13.0
+offset_top = -7.99997
+offset_right = 13.0
+mouse_filter = 2
+color = Color(0.909804, 0.917647, 0.376471, 1)
+
+[node name="Top" type="Node2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(1, 0.5)
+script = ExtResource("1_wrddt")
+width = 2.0
+radius = 12.0
+draw_color = Color(0.909804, 0.917647, 0.376471, 1)
+fill_color = Color(0.184314, 0.141176, 0.203922, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Bottom" type="Node2D" parent="."]
+scale = Vector2(1, 0.5)
+script = ExtResource("1_wrddt")
+width = 2.0
+radius = 12.0
+draw_color = Color(0.117647, 0.101961, 0.12549, 1)
+fill_color = Color(0.184314, 0.141176, 0.203922, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Middle" type="ColorRect" parent="."]
+offset_left = -11.0
+offset_top = -7.99997
+offset_right = 11.0
+mouse_filter = 2
+color = Color(0.184314, 0.141176, 0.203922, 1)
+
+[node name="Bubble" type="Node2D" parent="."]
+z_index = 2
+position = Vector2(0, -25)
+script = ExtResource("1_wrddt")
+width = 2.0
+radius = 8.0
+draw_color = Color(0.964706, 0.984314, 0.85098, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Icons" type="Node2D" parent="Bubble"]
+unique_name_in_owner = true
+
+[node name="AddPear" type="Node2D" parent="Bubble/Icons"]
+visible = false
+
+[node name="RingDraw" type="Node2D" parent="Bubble/Icons/AddPear"]
+position = Vector2(-4, 4)
+script = ExtResource("1_wrddt")
+width = 0.0
+radius = 3.0
+fill_color = Color(0.290196, 0.890196, 0.74902, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw2" type="Node2D" parent="Bubble/Icons/AddPear"]
+position = Vector2(-1, 4)
+script = ExtResource("1_wrddt")
+width = 0.0
+radius = 3.0
+fill_color = Color(0.290196, 0.890196, 0.74902, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw3" type="Node2D" parent="Bubble/Icons/AddPear"]
+position = Vector2(-2.5, 1.5)
+script = ExtResource("1_wrddt")
+width = 0.0
+radius = 3.0
+fill_color = Color(0.290196, 0.890196, 0.74902, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw4" type="Node2D" parent="Bubble/Icons/AddPear"]
+position = Vector2(-5, -3)
+skew = -0.420624
+script = ExtResource("1_wrddt")
+width = 0.0
+radius = 1.5
+fill_color = Color(0.87451, 0.309804, 0.803922, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="ColorRect" type="ColorRect" parent="Bubble/Icons/AddPear"]
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 7.0
+offset_bottom = -2.0
+mouse_filter = 2
+color = Color(0.290196, 0.890196, 0.74902, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Bubble/Icons/AddPear"]
+offset_left = 4.0
+offset_top = -7.0
+offset_right = 12.0
+offset_bottom = -5.0
+rotation = 1.5708
+mouse_filter = 2
+color = Color(0.290196, 0.890196, 0.74902, 1)
+
+[node name="AddNodeLength" type="Node2D" parent="Bubble/Icons"]
+visible = false
+
+[node name="Line2D" type="Line2D" parent="Bubble/Icons/AddNodeLength"]
+points = PackedVector2Array(-5, -1, 2, 5)
+width = 1.0
+default_color = Color(0.290196, 0.890196, 0.74902, 1)
+
+[node name="RingDraw" type="Node2D" parent="Bubble/Icons/AddNodeLength"]
+position = Vector2(-5, -1)
+script = ExtResource("1_wrddt")
+width = 1.0
+radius = 2.0
+draw_color = Color(0.290196, 0.890196, 0.74902, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw2" type="Node2D" parent="Bubble/Icons/AddNodeLength"]
+position = Vector2(2, 5)
+script = ExtResource("1_wrddt")
+width = 1.0
+radius = 2.0
+draw_color = Color(0.290196, 0.890196, 0.74902, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="ColorRect" type="ColorRect" parent="Bubble/Icons/AddNodeLength"]
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 7.0
+offset_bottom = -2.0
+mouse_filter = 2
+color = Color(0.290196, 0.890196, 0.74902, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Bubble/Icons/AddNodeLength"]
+offset_left = 4.0
+offset_top = -7.0
+offset_right = 12.0
+offset_bottom = -5.0
+rotation = 1.5708
+mouse_filter = 2
+color = Color(0.290196, 0.890196, 0.74902, 1)
+
+[node name="RecoveryDrops" type="Node2D" parent="Bubble/Icons"]
+visible = false
+
+[node name="Line2D" type="Line2D" parent="Bubble/Icons/RecoveryDrops"]
+show_behind_parent = true
+position = Vector2(-5.91991, -0.978613)
+points = PackedVector2Array(2.4982, 2.27677, 0, 0)
+width = 1.0
+default_color = Color(0.290196, 0.890196, 0.74902, 1)
+
+[node name="RingDraw" type="Node2D" parent="Bubble/Icons/RecoveryDrops"]
+position = Vector2(0.630238, 4.67574)
+script = ExtResource("1_wrddt")
+width = 1.0
+radius = 3.0
+draw_color = Color(0.87451, 0.309804, 0.803922, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw2" type="Node2D" parent="Bubble/Icons/RecoveryDrops"]
+position = Vector2(-5.91991, -0.978613)
+script = ExtResource("1_wrddt")
+width = 1.0
+radius = 2.0
+draw_color = Color(0.290196, 0.890196, 0.74902, 1)
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Node2D" type="Node2D" parent="Bubble/Icons/RecoveryDrops"]
+position = Vector2(-0.588284, -1.64698)
+rotation = -0.785398
+
+[node name="ColorRect" type="ColorRect" parent="Bubble/Icons/RecoveryDrops/Node2D"]
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 4.0
+offset_bottom = 5.0
+mouse_filter = 2
+color = Color(0.290196, 0.890196, 0.74902, 1)
+
+[node name="RingDraw3" type="Node2D" parent="Bubble/Icons/RecoveryDrops/Node2D"]
+position = Vector2(3, -2)
+script = ExtResource("1_wrddt")
+width = 0.0
+radius = 2.0
+fill_color = Color(0.290196, 0.890196, 0.74902, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw4" type="Node2D" parent="Bubble/Icons/RecoveryDrops/Node2D"]
+position = Vector2(3.0142, -2.70173)
+script = ExtResource("1_wrddt")
+width = 0.0
+radius = 1.5
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw5" type="Node2D" parent="Bubble/Icons/RecoveryDrops/Node2D"]
+position = Vector2(2.96219, 5.63738)
+script = ExtResource("1_wrddt")
+width = 0.0
+radius = 2.0
+fill_color = Color(0.290196, 0.890196, 0.74902, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw6" type="Node2D" parent="Bubble/Icons/RecoveryDrops/Node2D"]
+position = Vector2(2.91968, 6.50471)
+script = ExtResource("1_wrddt")
+width = 0.0
+radius = 1.5
+fill_color = Color(0.117647, 0.101961, 0.12549, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="LowerUpgradeWait" type="Node2D" parent="Bubble/Icons"]
+visible = false
+
+[node name="RingDraw" type="Node2D" parent="Bubble/Icons/LowerUpgradeWait"]
+position = Vector2(-3, 2)
+script = ExtResource("1_wrddt")
+width = 1.0
+radius = 2.5
+draw_color = Color(0.964706, 0.984314, 0.85098, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="ColorRect" type="ColorRect" parent="Bubble/Icons/LowerUpgradeWait"]
+offset_left = -4.0
+offset_top = -1.5
+offset_right = -2.0
+color = Color(0.964706, 0.984314, 0.85098, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Bubble/Icons/LowerUpgradeWait"]
+offset_left = -3.5
+offset_top = 0.5
+offset_right = -2.75
+offset_bottom = 2.0
+color = Color(0.964706, 0.984314, 0.85098, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Bubble/Icons/LowerUpgradeWait"]
+offset_left = -3.5
+offset_top = 2.5
+offset_right = -2.75
+offset_bottom = 4.785
+rotation = -1.57079
+color = Color(0.964706, 0.984314, 0.85098, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Bubble/Icons/LowerUpgradeWait"]
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 4.0
+offset_bottom = -1.0
+color = Color(0.87451, 0.309804, 0.803922, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Bubble/Icons/LowerUpgradeWait"]
+offset_left = 1.0
+offset_top = -5.0
+offset_right = 4.0
+offset_bottom = -4.0
+color = Color(0.87451, 0.309804, 0.803922, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="Bubble/Icons/LowerUpgradeWait"]
+position = Vector2(1, -5)
+color = Color(0.87451, 0.309804, 0.803922, 1)
+polygon = PackedVector2Array(-2, 4, 5, 4, 1.5, 8)
+
+[node name="Spawn" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rluat")
+}
+autoplay = "spawn"
+
+[node name="Sway" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xll01")
+}
+autoplay = "sway"
+
+[node name="RandomizeAnimationSpeed" type="Node" parent="Sway" node_paths=PackedStringArray("anim")]
+script = ExtResource("3_36tnm")
+anim = NodePath("..")
+metadata/_custom_type_script = "uid://bxrm6e3yo3xb8"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+visible = false
+z_index = 49
+offset_top = 128.0
+offset_bottom = 128.0
+border_color = Color(0.964706, 0.984314, 0.85098, 1)
+border_width = 0.0
+editor_only = false
+script = ExtResource("2_34p4x")
+pos_y = 128.0
+
+[node name="Hover" type="AnimationPlayer" parent="ReferenceRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_8c0l6")
+}
+autoplay = "RESET"
+
+[node name="ColorRect" type="ColorRect" parent="ReferenceRect"]
+show_behind_parent = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.101961, 0.12549, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ReferenceRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReferenceRect/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleDesc" type="RichTextLabel" parent="ReferenceRect/ColorRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 12
+bbcode_enabled = true
+text = "[b]%s[/b]
+%s"
+fit_content = true
+scroll_active = false
+
+[node name="Purchase" type="Button" parent="ReferenceRect/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+script = ExtResource("4_xll01")
+do_start_anim = true
+
+[node name="Label" type="Label" parent="ReferenceRect/ColorRect/MarginContainer/VBoxContainer/Purchase"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_36tnm")
+theme_override_font_sizes/font_size = 12
+text = "> %d nodes"
+
+[node name="ColorRect" type="Panel" parent="ReferenceRect/ColorRect/MarginContainer/VBoxContainer/Purchase/Label"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"ButtonPanel"
+theme_override_styles/panel = SubResource("StyleBoxFlat_xll01")
+
+[node name="Label" type="Label" parent="ReferenceRect/ColorRect/MarginContainer/VBoxContainer/Purchase/Label/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.117647, 0.101961, 0.12549, 1)
+theme_override_fonts/font = ExtResource("5_36tnm")
+theme_override_font_sizes/font_size = 12
+text = "> 2 nodes"
+
+[node name="Hover" type="AudioStreamPlayer" parent="ReferenceRect/ColorRect/MarginContainer/VBoxContainer/Purchase"]
+stream = SubResource("AudioStreamRandomizer_pldcb")
+pitch_scale = 0.98
+
+[node name="Press" type="AudioStreamPlayer" parent="ReferenceRect/ColorRect/MarginContainer/VBoxContainer/Purchase"]
+stream = SubResource("AudioStreamRandomizer_2445c")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="pressed" from="ReferenceRect/ColorRect/MarginContainer/VBoxContainer/Purchase" to="." method="_on_purchase_pressed"]
